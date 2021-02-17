@@ -124,4 +124,13 @@ public class TeacherDeveloperCourseServiceImpl implements TeacherDeveloperCourse
 		teacherDeveloperCourseRepository.deleteTeachersByDeveloperCourseId(developerCourseId);
 	}
 
+	@Override
+	public void deleteTeacherDeveloperCourseByTeacherId(Integer teacherId) {
+		Optional<Teacher> opt = teacherRepository.findById(teacherId);
+		if(!opt.isPresent()) {
+			throw new IllegalArgumentException("Developer course with the following teacher id = " + teacherId + " is not found.");
+		}
+		teacherDeveloperCourseRepository.deleteTeacherDeveloperCoursesByTeacherId(teacherId);
+	}
+
 }

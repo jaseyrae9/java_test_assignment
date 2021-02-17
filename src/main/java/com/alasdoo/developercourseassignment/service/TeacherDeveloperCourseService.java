@@ -9,5 +9,5 @@ public interface TeacherDeveloperCourseService extends CrudService<TeacherDevelo
     List<TeacherDeveloperCourseDTO> findByTeacherId(Integer teacherId);
     List<TeacherDeveloperCourseDTO> findByDeveloperCourseId(Integer developerCourseId);
     void deleteTeachersByDeveloperCourseId(Integer courseId);
-
+    void deleteTeacherDeveloperCourseByTeacherId(Integer teacherId);
 }

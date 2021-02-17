@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alasdoo.developercourseassignment.dto.TeacherDTO;
 import com.alasdoo.developercourseassignment.entity.Teacher;
@@ -22,7 +23,10 @@ public class TeacherServiceImpl implements TeacherService {
 	@Autowired
 	private TeacherMapper teacherMapper;
 
-    @Override
+	@Autowired
+	private TeacherDeveloperCourseServiceImpl teacherDeveloperCourseServiceImpl;
+
+	@Override
 	public TeacherDTO findOne(Integer id) {
 		Optional<Teacher> teacher = teacherRepository.findById(id);
 		if (!teacher.isPresent()) {
@@ -31,28 +35,32 @@ public class TeacherServiceImpl implements TeacherService {
 		return teacherMapper.transformToDTO(teacher.get());
 	}
 
-    @Override
+	@Override
 	public List<TeacherDTO> findAll() {
 		return teacherRepository.findAll().stream().map(t -> teacherMapper.transformToDTO(t))
 				.collect(Collectors.toList());
 	}
 
-    @Override
+	@Override
 	public TeacherDTO save(TeacherDTO teacherDTO) {
 		Teacher teacher = teacherMapper.transformToEntity(teacherDTO);
 		return teacherMapper.transformToDTO(teacherRepository.save(teacher));
 	}
 
-    @Override
+	@Transactional
+	@Override
 	public void remove(Integer id) throws IllegalArgumentException {
 		Optional<Teacher> teacher = teacherRepository.findById(id);
 		if (!teacher.isPresent()) {
 			throw new IllegalArgumentException("Teacher with the following id = " + id + " is not found.");
 		}
+
+		teacherDeveloperCourseServiceImpl.deleteTeacherDeveloperCourseByTeacherId(id); // deleting many to many
+																						// relationship
 		teacherRepository.deleteById(id);
 	}
 
-    @Override
+	@Override
 	public TeacherDTO update(Integer id, TeacherDTO teacherDTO) {
 		Optional<Teacher> oldTeacherOpt = teacherRepository.findById(id);
 		if (!oldTeacherOpt.isPresent()) {
@@ -66,7 +74,7 @@ public class TeacherServiceImpl implements TeacherService {
 		return teacherMapper.transformToDTO(oldTeacher);
 	}
 
-    @Override
+	@Override
 	public TeacherDTO findByTeacherNameAndTeacherSurname(String name, String surname) {
 		Optional<Teacher> teacher = teacherRepository.findByTeacherNameAndTeacherSurname(name, surname);
 		if (!teacher.isPresent()) {
@@ -74,8 +82,8 @@ public class TeacherServiceImpl implements TeacherService {
 		}
 		return teacherMapper.transformToDTO(teacher.get());
 	}
-    
-    @Override
+
+	@Override
 	public TeacherDTO findByTeacherEmail(String email) {
 		Optional<Teacher> teacher = teacherRepository.findByTeacherEmail(email);
 		if (!teacher.isPresent()) {
