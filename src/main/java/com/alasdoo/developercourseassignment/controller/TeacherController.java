@@ -59,11 +59,24 @@ public class TeacherController {
 		return teacherServiceImpl.save(teacherDTO);
 	}
 
+	/**
+	 * Returns data about teacher with the provided email.
+	 * 
+	 * @param email - email of the teacher
+	 * @return DTO object of teacher
+	 */
 	@GetMapping(value = "/get/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public TeacherDTO findByEmail(@PathVariable("email") String email) {
 		return teacherServiceImpl.findByTeacherEmail(email);
 	}
 
+	/**
+	 * Returns data about teacher with the provided name and surname.
+	 * 
+	 * @param name    - name of the teacher
+	 * @param surname - surname of the teacher
+	 * @return DTO object of teacher
+	 */
 	@GetMapping(value = "/get/{name}/{surname}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public TeacherDTO findByNameAndSurname(@PathVariable("name") String name, @PathVariable("surname") String surname) {
 		return teacherServiceImpl.findByTeacherNameAndTeacherSurname(name, surname);
