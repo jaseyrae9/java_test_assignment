@@ -35,14 +35,29 @@ public class TeacherServiceImpl {
 	}
 
 	public TeacherDTO save(TeacherDTO teacherDTO) {
-		return null;
+		Teacher teacher = teacherMapper.transformToEntity(teacherDTO);
+		return teacherMapper.transformToDTO(teacherRepository.save(teacher));
 	}
 
 	public void remove(Integer id) throws IllegalArgumentException {
+		Optional<Teacher> teacher = teacherRepository.findById(id);
+		if (!teacher.isPresent()) {
+			throw new IllegalArgumentException("Teacher with the following id = " + id + " is not found.");
+		}
+		teacherRepository.deleteById(id);
 	}
 
 	public TeacherDTO update(Integer id, TeacherDTO teacherDTO) {
-		return null;
+		Optional<Teacher> oldTeacherOpt = teacherRepository.findById(id);
+		if (!oldTeacherOpt.isPresent()) {
+			throw new IllegalArgumentException("Teacher with the following id = " + id + " is not found.");
+		}
+		Teacher oldTeacher = oldTeacherOpt.get();
+		oldTeacher.setTeacherName(teacherDTO.getTeacherName());
+		oldTeacher.setTeacherSurname(teacherDTO.getTeacherSurname());
+		oldTeacher.setTeacherEmail(teacherDTO.getTeacherEmail());
+		teacherRepository.save(oldTeacher);
+		return teacherMapper.transformToDTO(oldTeacher);
 	}
 
 	public TeacherDTO findByTeacherNameAndTeacherSurname(String name, String surname) {
