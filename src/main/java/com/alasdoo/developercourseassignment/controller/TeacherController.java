@@ -22,6 +22,12 @@ public class TeacherController {
     @Autowired
     TeacherServiceImpl teacherServiceImpl;
 
+    /**
+     * Returns data about teacher with the selected id.
+     * 
+     * @param id - id of teacher
+     * @return - DTO object with teacher id, name, surname and email
+     */
     @GetMapping(value = "/getTeacher/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TeacherDTO selectTeacher(@PathVariable("id") Integer id) {
         return teacherServiceImpl.findOne(id);
