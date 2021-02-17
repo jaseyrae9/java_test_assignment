@@ -26,16 +26,21 @@ public class TeacherController {
      * Returns data about teacher with the selected id.
      * 
      * @param id - id of teacher
-     * @return - DTO object with teacher id, name, surname and email
+     * @return DTO object with teacher id, name, surname and email
      */
     @GetMapping(value = "/getTeacher/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TeacherDTO selectTeacher(@PathVariable("id") Integer id) {
         return teacherServiceImpl.findOne(id);
     }
 
+    /**
+     * Returns DTO objects for teachers. Object contain id, name, surname and email.
+     * 
+     * @return information about all teachers.
+     */
     @GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TeacherDTO> getAllTeachers() {
-        return null;
+		return teacherServiceImpl.findAll();
     }
 
     @PostMapping(value = "/addTeacher", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
