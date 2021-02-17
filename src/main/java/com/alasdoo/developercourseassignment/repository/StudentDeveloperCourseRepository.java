@@ -22,4 +22,8 @@ public interface StudentDeveloperCourseRepository extends JpaRepository<StudentD
     @Modifying 
     @Query("delete from StudentDeveloperCourse sdc where sdc.developerCourseId = :id") 
     void deleteStudentsByDeveloperCourseId(@Param("id") Integer id); 
+    
+    @Modifying
+    @Query("delete from StudentDeveloperCourse sdc where sdc.studentId = :id ")
+    void deleteStudentDeveloperCoursesByStudentId(@Param("id") Integer id);
 }

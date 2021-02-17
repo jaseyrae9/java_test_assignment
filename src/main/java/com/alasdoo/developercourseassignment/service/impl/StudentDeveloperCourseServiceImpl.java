@@ -119,4 +119,14 @@ public class StudentDeveloperCourseServiceImpl implements StudentDeveloperCourse
 		}
 		studentDeveloperCourseRepository.deleteStudentsByDeveloperCourseId(developerCourseId);
 	}
+
+	@Override
+	public void deleteStudentDeveloperCoursesByStudentId(Integer studentId) {
+		Optional<Student> opt = studentRepository.findById(studentId);
+		if (!opt.isPresent()) {
+			throw new IllegalArgumentException(
+					"Developer course with the following student id = " + studentId + " is not found.");
+		}
+		studentDeveloperCourseRepository.deleteStudentDeveloperCoursesByStudentId(studentId);
+	}
 }

@@ -7,6 +7,7 @@ import com.alasdoo.developercourseassignment.repository.StudentRepository;
 import com.alasdoo.developercourseassignment.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentMapper studentMapper;
+    
+    @Autowired
+    private StudentDeveloperCourseServiceImpl studentDeveloperCourseServiceImpl;
 
     @Override
     public StudentDTO findOne(Integer id) {
@@ -42,6 +46,7 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.transformToDTO(studentRepository.save(student));
     }
 
+    @Transactional
     @Override
     public void remove(Integer id) throws IllegalArgumentException {
         Optional<Student> student = studentRepository.findById(id);
@@ -49,6 +54,9 @@ public class StudentServiceImpl implements StudentService {
             throw new IllegalArgumentException
                 ("Student with the following id = " + id + " is not found.");
         }
+        
+        // when deleting student it has to be deleted from student developer course
+        studentDeveloperCourseServiceImpl.deleteStudentDeveloperCoursesByStudentId(id);
         studentRepository.deleteById(id);
     }
 
