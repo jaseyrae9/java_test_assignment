@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/student")
 @CrossOrigin
@@ -35,12 +37,12 @@ public class StudentController {
     }
 
     @PostMapping(value = "/addStudent", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public StudentDTO saveStudent(@RequestBody StudentDTO studentDTO) {
+    public StudentDTO saveStudent(@Valid @RequestBody StudentDTO studentDTO) {
         return studentServiceImpl.save(studentDTO);
     }
 
     @PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public StudentDTO updateStudent(@PathVariable("id") Integer id, @RequestBody StudentDTO studentDTO) {
+    public StudentDTO updateStudent(@PathVariable("id") Integer id, @Valid @RequestBody StudentDTO studentDTO) {
         return studentServiceImpl.update(id, studentDTO);
     }
 

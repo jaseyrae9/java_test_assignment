@@ -2,42 +2,57 @@ package com.alasdoo.developercourseassignment.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 public class DeveloperCourseDTO implements Serializable {
 
-    private Integer id;
-    private String developerCourseName;
-    private Integer costPerClass;
-    private Integer classesPerWeek;
+	private Integer id;
 
-    public Integer getId() {
-        return id;
-    }
+	@NotBlank(message = "Please, enter a developer course name.")
+	@Length(max = 250, message = "Developer course name cannot be longer than 250.")
+	private String developerCourseName;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	@NotNull(message = "Plese, enter cost per class.")
+	@Min(value = 1, message = "Cost per class must be at least 1.")
+	private Integer costPerClass;
 
-    public String getDeveloperCourseName() {
-        return developerCourseName;
-    }
+	@NotNull(message = "Plese, enter how many classes per week.")
+	@Min(value = 1, message = "Class per week must be at least 1.")
+	private Integer classesPerWeek;
 
-    public void setDeveloperCourseName(String developerCourseName) {
-        this.developerCourseName = developerCourseName;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Integer getCostPerClass() {
-        return costPerClass;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setCostPerClass(Integer costPerClass) {
-        this.costPerClass = costPerClass;
-    }
+	public String getDeveloperCourseName() {
+		return developerCourseName;
+	}
 
-    public Integer getClassesPerWeek() {
-        return classesPerWeek;
-    }
+	public void setDeveloperCourseName(String developerCourseName) {
+		this.developerCourseName = developerCourseName;
+	}
 
-    public void setClassesPerWeek(Integer classesPerWeek) {
-        this.classesPerWeek = classesPerWeek;
-    }
+	public Integer getCostPerClass() {
+		return costPerClass;
+	}
+
+	public void setCostPerClass(Integer costPerClass) {
+		this.costPerClass = costPerClass;
+	}
+
+	public Integer getClassesPerWeek() {
+		return classesPerWeek;
+	}
+
+	public void setClassesPerWeek(Integer classesPerWeek) {
+		this.classesPerWeek = classesPerWeek;
+	}
 }

@@ -90,7 +90,7 @@ public class TeacherController {
 	 * @return updated teacher
 	 */
 	@PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public TeacherDTO updateTeacher(@PathVariable("id") Integer id, @RequestBody TeacherDTO teacherDTO) {
+	public TeacherDTO updateTeacher(@PathVariable("id") Integer id, @Valid @RequestBody TeacherDTO teacherDTO) {
 		return teacherServiceImpl.update(id, teacherDTO);
 	}
 

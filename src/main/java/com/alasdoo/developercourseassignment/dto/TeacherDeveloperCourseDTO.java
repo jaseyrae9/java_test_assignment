@@ -1,32 +1,38 @@
 package com.alasdoo.developercourseassignment.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class TeacherDeveloperCourseDTO {
 
-    private Integer id;
-    private Integer developerCourseId;
-    private Integer teacherId;
+	private Integer id;
 
-    public Integer getId() {
-        return id;
-    }
+	@NotNull(message = "Developer class must be enetered.")
+	private Integer developerCourseId;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	@NotNull(message = "Student must be enetered.")
+	private Integer teacherId;
 
-    public Integer getDeveloperCourseId() {
-        return developerCourseId;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setDeveloperCourseId(Integer developerCourseId) {
-        this.developerCourseId = developerCourseId;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getTeacherId() {
-        return teacherId;
-    }
+	public Integer getDeveloperCourseId() {
+		return developerCourseId;
+	}
 
-    public void setTeacherId(Integer developerCourseTeacherId) {
-        this.teacherId = developerCourseTeacherId;
-    }
+	public void setDeveloperCourseId(Integer developerCourseId) {
+		this.developerCourseId = developerCourseId;
+	}
+
+	public Integer getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(Integer developerCourseTeacherId) {
+		this.teacherId = developerCourseTeacherId;
+	}
 }

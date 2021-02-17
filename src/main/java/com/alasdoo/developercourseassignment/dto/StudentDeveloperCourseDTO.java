@@ -2,42 +2,50 @@ package com.alasdoo.developercourseassignment.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 public class StudentDeveloperCourseDTO implements Serializable {
 
-    private Integer id;
-    private Integer studentId;
-    private Integer developerCourseId;
-    private Integer classesBought;
+	private Integer id;
 
-    public Integer getId() {
-        return id;
-    }
+	@NotNull(message = "Student must be enetered.")
+	private Integer studentId;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	@NotNull(message = "Developer class must be enetered.")
+	private Integer developerCourseId;
 
-    public Integer getStudentId() {
-        return studentId;
-    }
+	@NotNull(message = "Plese, enter for how many classes are bought.")
+	private Integer classesBought;
 
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Integer getDeveloperCourseId() {
-        return developerCourseId;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setDeveloperCourseId(Integer developerCourseId) {
-        this.developerCourseId = developerCourseId;
-    }
+	public Integer getStudentId() {
+		return studentId;
+	}
 
-    public Integer getClassesBought() {
-        return classesBought;
-    }
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
+	}
 
-    public void setClassesBought(Integer classesBought) {
-        this.classesBought = classesBought;
-    }
+	public Integer getDeveloperCourseId() {
+		return developerCourseId;
+	}
+
+	public void setDeveloperCourseId(Integer developerCourseId) {
+		this.developerCourseId = developerCourseId;
+	}
+
+	public Integer getClassesBought() {
+		return classesBought;
+	}
+
+	public void setClassesBought(Integer classesBought) {
+		this.classesBought = classesBought;
+	}
 }

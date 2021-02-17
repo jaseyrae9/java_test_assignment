@@ -5,6 +5,8 @@ import com.alasdoo.developercourseassignment.entity.Student;
 import com.alasdoo.developercourseassignment.mapper.StudentMapper;
 import com.alasdoo.developercourseassignment.repository.StudentRepository;
 import com.alasdoo.developercourseassignment.service.StudentService;
+import com.alasdoo.developercourseassignment.utils.RandomString;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +45,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO save(StudentDTO studentDTO) {
         Student student = studentMapper.transformToEntity(studentDTO);
+        student.setPassword(RandomString.generateRandomString());
         return studentMapper.transformToDTO(studentRepository.save(student));
     }
 
@@ -69,10 +72,10 @@ public class StudentServiceImpl implements StudentService {
         }
         oldStudent.get().setName(studentDTO.getName());
         oldStudent.get().setSurname(studentDTO.getSurname());
-        oldStudent.get().setAccountName(studentDTO.getAccountName());
-        oldStudent.get().setPassword(studentDTO.getPassword());
+        // oldStudent.get().setAccountName(studentDTO.getAccountName());
+        // oldStudent.get().setPassword(studentDTO.getPassword());
         oldStudent.get().setEmail(studentDTO.getEmail());
-        oldStudent.get().setBankCardNumber(studentDTO.getBankCardNumber());
+        // oldStudent.get().setBankCardNumber(studentDTO.getBankCardNumber());
         studentRepository.save(oldStudent.get());
         return studentMapper.transformToDTO(oldStudent.get());
     }
