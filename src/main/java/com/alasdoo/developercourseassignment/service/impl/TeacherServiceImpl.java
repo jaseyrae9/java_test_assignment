@@ -11,9 +11,10 @@ import com.alasdoo.developercourseassignment.dto.TeacherDTO;
 import com.alasdoo.developercourseassignment.entity.Teacher;
 import com.alasdoo.developercourseassignment.mapper.TeacherMapper;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
+import com.alasdoo.developercourseassignment.service.TeacherService;
 
 @Service
-public class TeacherServiceImpl {
+public class TeacherServiceImpl implements TeacherService {
 
 	@Autowired
 	private TeacherRepository teacherRepository;
@@ -21,6 +22,7 @@ public class TeacherServiceImpl {
 	@Autowired
 	private TeacherMapper teacherMapper;
 
+    @Override
 	public TeacherDTO findOne(Integer id) {
 		Optional<Teacher> teacher = teacherRepository.findById(id);
 		if (!teacher.isPresent()) {
@@ -29,16 +31,19 @@ public class TeacherServiceImpl {
 		return teacherMapper.transformToDTO(teacher.get());
 	}
 
+    @Override
 	public List<TeacherDTO> findAll() {
 		return teacherRepository.findAll().stream().map(t -> teacherMapper.transformToDTO(t))
 				.collect(Collectors.toList());
 	}
 
+    @Override
 	public TeacherDTO save(TeacherDTO teacherDTO) {
 		Teacher teacher = teacherMapper.transformToEntity(teacherDTO);
 		return teacherMapper.transformToDTO(teacherRepository.save(teacher));
 	}
 
+    @Override
 	public void remove(Integer id) throws IllegalArgumentException {
 		Optional<Teacher> teacher = teacherRepository.findById(id);
 		if (!teacher.isPresent()) {
@@ -47,6 +52,7 @@ public class TeacherServiceImpl {
 		teacherRepository.deleteById(id);
 	}
 
+    @Override
 	public TeacherDTO update(Integer id, TeacherDTO teacherDTO) {
 		Optional<Teacher> oldTeacherOpt = teacherRepository.findById(id);
 		if (!oldTeacherOpt.isPresent()) {
@@ -60,6 +66,7 @@ public class TeacherServiceImpl {
 		return teacherMapper.transformToDTO(oldTeacher);
 	}
 
+    @Override
 	public TeacherDTO findByTeacherNameAndTeacherSurname(String name, String surname) {
 		Optional<Teacher> teacher = teacherRepository.findByTeacherNameAndTeacherSurname(name, surname);
 		if (!teacher.isPresent()) {
@@ -67,7 +74,8 @@ public class TeacherServiceImpl {
 		}
 		return teacherMapper.transformToDTO(teacher.get());
 	}
-
+    
+    @Override
 	public TeacherDTO findByTeacherEmail(String email) {
 		Optional<Teacher> teacher = teacherRepository.findByTeacherEmail(email);
 		if (!teacher.isPresent()) {

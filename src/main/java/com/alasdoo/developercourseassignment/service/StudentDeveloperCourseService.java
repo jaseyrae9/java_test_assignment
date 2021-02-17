@@ -9,4 +9,6 @@ public interface StudentDeveloperCourseService extends CrudService<StudentDevelo
     StudentDeveloperCourseDTO findByStudentId(Integer studentId);
 
     List<StudentDeveloperCourseDTO> findByDeveloperCourseId(Integer developerCourseId);
+    void deleteStudentsByDeveloperCourseId(Integer courseId);
+
 }

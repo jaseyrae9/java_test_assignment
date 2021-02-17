@@ -1,5 +1,14 @@
 package com.alasdoo.developercourseassignment.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.alasdoo.developercourseassignment.dto.DeveloperCourseDTO;
 import com.alasdoo.developercourseassignment.entity.DeveloperCourse;
 import com.alasdoo.developercourseassignment.mapper.DeveloperCourseMapper;
@@ -7,12 +16,6 @@ import com.alasdoo.developercourseassignment.repository.DeveloperCourseRepositor
 import com.alasdoo.developercourseassignment.repository.StudentRepository;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
 import com.alasdoo.developercourseassignment.service.DeveloperCourseService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class DeveloperCourseServiceImpl implements DeveloperCourseService {
@@ -28,7 +31,13 @@ public class DeveloperCourseServiceImpl implements DeveloperCourseService {
 
     @Autowired
     private DeveloperCourseMapper developerCourseMapper;
-
+    
+    @Autowired
+    private TeacherDeveloperCourseServiceImpl teacherDeveloperCourseServiceImpl;
+    
+    @Autowired
+    private StudentDeveloperCourseServiceImpl studentDeveloperCourseServiceImpl;
+   
     @Override
     public DeveloperCourseDTO findOne(Integer id) {
         Optional<DeveloperCourse> developerCourse = developerCourseRepository.findById(id);
@@ -50,6 +59,7 @@ public class DeveloperCourseServiceImpl implements DeveloperCourseService {
         return developerCourseMapper.transformToDTO(developerCourseRepository.save(developerCourse));
     }
 
+	@Transactional
     @Override
     public void remove(Integer id) throws IllegalArgumentException {
         Optional<DeveloperCourse> developerCourse = developerCourseRepository.findById(id);
@@ -57,6 +67,10 @@ public class DeveloperCourseServiceImpl implements DeveloperCourseService {
             throw new IllegalArgumentException
                 ("Course with the following id = " + id + " is not found.");
         }
+        
+        // when course is deleted it has to be deleted from teacher and student developer courses
+        teacherDeveloperCourseServiceImpl.deleteTeachersByDeveloperCourseId(id);
+        studentDeveloperCourseServiceImpl.deleteStudentsByDeveloperCourseId(id);
         developerCourseRepository.deleteById(id);
     }
 
