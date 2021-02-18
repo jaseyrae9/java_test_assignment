@@ -12,6 +12,7 @@ public class PopulateDatabasePage {
 	public PopulateDatabasePage(WebDriver driver) {
 		this.driver = driver;
 	}
+	
 	@FindBy(how = How.XPATH, using="//a[@href='/settings']")
 	WebElement settingsButton;
 

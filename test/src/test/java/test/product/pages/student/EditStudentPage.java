@@ -12,29 +12,31 @@ public class EditStudentPage {
 	public EditStudentPage(WebDriver driver) {
 		this.driver = driver;
 	}
-	
+
 	@FindBy(how = How.NAME, using = "name")
 	WebElement name;
 
 	@FindBy(how = How.NAME, using = "surname")
 	WebElement surname;
-	
 
 	@FindBy(how = How.NAME, using = "email")
 	WebElement email;
-	
-	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div[1]")
+
+	@FindBy(how = How.CSS, using = "[data-rowindex='0']") // select first
 	WebElement singleRow;
-		
+
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[2]/form/div[7]/button[1]")
 	WebElement saveButton;
 
+	@FindBy(how = How.XPATH, using = "//a[@href='/student']")
+	WebElement studentsButton;
 
 	public void updateStudentName(String argName) {
-		singleRow.click(); // it may not be necessary because it opens immediately
-		name.clear();
-		name.sendKeys(argName);
-		saveButton.click();
+		studentsButton.click(); // navigate to students page
+		singleRow.click(); // select student
+		name.clear(); // delete old name
+		name.sendKeys(argName); // set new name
+		saveButton.click(); // click save button
 	}
 
 }

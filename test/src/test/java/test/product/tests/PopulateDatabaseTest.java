@@ -2,6 +2,8 @@ package test.product.tests;
 
 import static org.testng.Assert.assertEquals;
 
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Reporter;
@@ -10,6 +12,7 @@ import org.testng.annotations.Test;
 import test.product.BaseClass;
 import test.product.pages.PopulateDatabasePage;
 
+@FixMethodOrder(MethodSorters.JVM)
 public class PopulateDatabaseTest extends BaseClass{
 
 	/*@Test(description = "This test will populate database.")

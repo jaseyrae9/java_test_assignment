@@ -1,41 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results total="2" passed="2" failed="0" skipped="0">
+<testng-results total="9" passed="9" failed="0" skipped="0">
   <reporter-output>
     <line>
       <![CDATA[-------------- set up ---------]]>
     </line>
     <line>
+      <![CDATA[AAAAAAAAA[[FirefoxDriver: firefox on WINDOWS (86abb4e3-4433-4a6b-93bc-85e867ed8cdc)] -> xpath: //*[@id="root"]/div/main/div[2]/div[3]/div[2]/div[1]/div/div[2]/div[2]/div/div/div/div[1]]]]>
+    </line>
+    <line>
       <![CDATA[-------------- closing driver ---------]]>
     </line>
   </reporter-output>
-  <suite started-at="2021-02-18T14:40:18Z" name="Default suite" finished-at="2021-02-18T14:40:31Z" duration-ms="13415">
+  <suite started-at="2021-02-18T19:12:33Z" name="Default suite" finished-at="2021-02-18T19:13:18Z" duration-ms="45163">
     <groups>
     </groups>
-    <test started-at="2021-02-18T14:40:18Z" name="Default test" finished-at="2021-02-18T14:40:31Z" duration-ms="13415">
+    <test started-at="2021-02-18T19:12:33Z" name="Default test" finished-at="2021-02-18T19:13:18Z" duration-ms="45163">
       <class name="test.product.tests.StudentTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:test.product.tests.StudentTest@4a3631f8]" started-at="2021-02-18T15:40:18Z" name="setUp" finished-at="2021-02-18T15:40:26Z" duration-ms="8317" status="PASS">
+        <test-method signature="addNewStudent()[pri:0, instance:test.product.tests.StudentTest@7c51f34b]" started-at="2021-02-18T20:12:43Z" name="addNewStudent" description="This test will add successfully new student." finished-at="2021-02-18T20:12:46Z" duration-ms="3588" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addNewStudent -->
+        <test-method signature="deleteStudent()[pri:0, instance:test.product.tests.StudentTest@7c51f34b]" started-at="2021-02-18T20:12:46Z" name="deleteStudent" description="This test will delete student." finished-at="2021-02-18T20:12:50Z" duration-ms="3788" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteStudent -->
+        <test-method signature="updateStudentName()[pri:0, instance:test.product.tests.StudentTest@7c51f34b]" started-at="2021-02-18T20:12:50Z" name="updateStudentName" description="This test will update student name." finished-at="2021-02-18T20:12:55Z" duration-ms="5032" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateStudentName -->
+      </class> <!-- test.product.tests.StudentTest -->
+      <class name="test.product.tests.StudentCourseTest">
+        <test-method signature="addCourseToStudent()[pri:0, instance:test.product.tests.StudentCourseTest@6a47b187]" started-at="2021-02-18T20:13:02Z" name="addCourseToStudent" description="This test will add course to student." finished-at="2021-02-18T20:13:07Z" duration-ms="5677" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCourseToStudent -->
+        <test-method signature="deleteStudentCourse()[pri:0, instance:test.product.tests.StudentCourseTest@6a47b187]" started-at="2021-02-18T20:13:07Z" name="deleteStudentCourse" description="This test will delete student course." finished-at="2021-02-18T20:13:14Z" duration-ms="6316" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteStudentCourse -->
+        <test-method signature="editStudentCourse()[pri:0, instance:test.product.tests.StudentCourseTest@6a47b187]" started-at="2021-02-18T20:13:14Z" name="editStudentCourse" description="This test will edit student course." finished-at="2021-02-18T20:13:18Z" duration-ms="4526" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[AAAAAAAAA[[FirefoxDriver: firefox on WINDOWS (86abb4e3-4433-4a6b-93bc-85e867ed8cdc)] -> xpath: //*[@id="root"]/div/main/div[2]/div[3]/div[2]/div[1]/div/div[2]/div[2]/div/div/div/div[1]]]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- editStudentCourse -->
+      </class> <!-- test.product.tests.StudentCourseTest -->
+      <class name="test.product.tests.CourseTest">
+        <test-method signature="addNewCourse()[pri:0, instance:test.product.tests.CourseTest@1ef6d34c]" started-at="2021-02-18T20:12:55Z" name="addNewCourse" description="This test will add successfully new course." finished-at="2021-02-18T20:12:58Z" duration-ms="2851" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addNewCourse -->
+        <test-method signature="deleteCourse()[pri:0, instance:test.product.tests.CourseTest@1ef6d34c]" started-at="2021-02-18T20:12:58Z" name="deleteCourse" description="This test will delete successfully course." finished-at="2021-02-18T20:13:00Z" duration-ms="2249" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteCourse -->
+        <test-method signature="updateCourse()[pri:0, instance:test.product.tests.CourseTest@1ef6d34c]" started-at="2021-02-18T20:13:00Z" name="updateCourse" description="This test will update successfully course." finished-at="2021-02-18T20:13:02Z" duration-ms="1581" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateCourse -->
+      </class> <!-- test.product.tests.CourseTest -->
+      <class name="test.product.BaseClass">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:test.product.BaseClass@3e2059ae]" started-at="2021-02-18T20:12:33Z" name="setUp" finished-at="2021-02-18T20:12:43Z" duration-ms="9504" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[-------------- set up ---------]]>
             </line>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="addNewStudent()[pri:0, instance:test.product.tests.StudentTest@4a3631f8]" started-at="2021-02-18T15:40:26Z" name="addNewStudent" description="This test will add successfully new student." finished-at="2021-02-18T15:40:29Z" duration-ms="3123" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addNewStudent -->
-        <test-method signature="updateStudentName()[pri:0, instance:test.product.tests.StudentTest@4a3631f8]" started-at="2021-02-18T15:40:29Z" name="updateStudentName" description="This test will update student name." finished-at="2021-02-18T15:40:31Z" duration-ms="1934" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- updateStudentName -->
-        <test-method is-config="true" signature="closeApp()[pri:0, instance:test.product.tests.StudentTest@4a3631f8]" started-at="2021-02-18T15:40:31Z" name="closeApp" finished-at="2021-02-18T15:40:31Z" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="closeApp()[pri:0, instance:test.product.BaseClass@3e2059ae]" started-at="2021-02-18T20:13:18Z" name="closeApp" finished-at="2021-02-18T20:13:18Z" duration-ms="0" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[-------------- closing driver ---------]]>
             </line>
           </reporter-output>
         </test-method> <!-- closeApp -->
-      </class> <!-- test.product.tests.StudentTest -->
+      </class> <!-- test.product.BaseClass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
