@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.alasdoo.developercourseassignment.dto.TeacherDTO;
 import com.alasdoo.developercourseassignment.entity.Teacher;
+import com.alasdoo.developercourseassignment.exceptions.ResourceNotFoundException;
 import com.alasdoo.developercourseassignment.mapper.TeacherMapper;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
 import com.alasdoo.developercourseassignment.service.TeacherService;
@@ -27,10 +28,10 @@ public class TeacherServiceImpl implements TeacherService {
 	private TeacherDeveloperCourseServiceImpl teacherDeveloperCourseServiceImpl;
 
 	@Override
-	public TeacherDTO findOne(Integer id) {
+	public TeacherDTO findOne(Integer id) throws ResourceNotFoundException {
 		Optional<Teacher> teacher = teacherRepository.findById(id);
 		if (!teacher.isPresent()) {
-			throw new IllegalArgumentException("Teacher with the following id = " + id + " is not found.");
+			throw new ResourceNotFoundException(id.toString(), "Teacher not found.");
 		}
 		return teacherMapper.transformToDTO(teacher.get());
 	}
@@ -49,10 +50,10 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Transactional
 	@Override
-	public void remove(Integer id) throws IllegalArgumentException {
+	public void remove(Integer id) throws ResourceNotFoundException {
 		Optional<Teacher> teacher = teacherRepository.findById(id);
 		if (!teacher.isPresent()) {
-			throw new IllegalArgumentException("Teacher with the following id = " + id + " is not found.");
+			throw new ResourceNotFoundException(id.toString(), "Teacher not found.");
 		}
 
 		teacherDeveloperCourseServiceImpl.deleteTeacherDeveloperCourseByTeacherId(id); // deleting many to many
@@ -61,10 +62,10 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	@Override
-	public TeacherDTO update(Integer id, TeacherDTO teacherDTO) {
+	public TeacherDTO update(Integer id, TeacherDTO teacherDTO) throws ResourceNotFoundException {
 		Optional<Teacher> oldTeacherOpt = teacherRepository.findById(id);
 		if (!oldTeacherOpt.isPresent()) {
-			throw new IllegalArgumentException("Teacher with the following id = " + id + " is not found.");
+			throw new ResourceNotFoundException(id.toString(), "Teacher not found.");
 		}
 		Teacher oldTeacher = oldTeacherOpt.get();
 		oldTeacher.setTeacherName(teacherDTO.getTeacherName());
@@ -75,19 +76,19 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	@Override
-	public TeacherDTO findByTeacherNameAndTeacherSurname(String name, String surname) {
+	public TeacherDTO findByTeacherNameAndTeacherSurname(String name, String surname) throws ResourceNotFoundException {
 		Optional<Teacher> teacher = teacherRepository.findByTeacherNameAndTeacherSurname(name, surname);
 		if (!teacher.isPresent()) {
-			throw new IllegalArgumentException("Teacher with the provided name and surname combination is not found");
+			throw new ResourceNotFoundException(name + " " + surname, "Teacher not found.");
 		}
 		return teacherMapper.transformToDTO(teacher.get());
 	}
 
 	@Override
-	public TeacherDTO findByTeacherEmail(String email) {
+	public TeacherDTO findByTeacherEmail(String email) throws ResourceNotFoundException {
 		Optional<Teacher> teacher = teacherRepository.findByTeacherEmail(email);
 		if (!teacher.isPresent()) {
-			throw new IllegalArgumentException("Teacher with the following email = " + email + " is not found.");
+			throw new ResourceNotFoundException(email, "Teacher not found.");
 		}
 		return teacherMapper.transformToDTO(teacher.get());
 	}

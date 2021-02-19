@@ -12,18 +12,16 @@ import java.util.Optional;
 @Repository
 public interface DeveloperCourseRepository extends JpaRepository<DeveloperCourse, Integer> {
 
-    Optional<List<DeveloperCourse>> findByDeveloperCourseName(String developerCourseName);
+	Optional<List<DeveloperCourse>> findByDeveloperCourseName(String developerCourseName);
 
-    @Query(value = "SELECT dc.id, dc.classes_per_week, dc.cost_per_class, dc.developer_course_name " +
-        "FROM developer_course dc " +
-        "JOIN student s " +
-        "WHERE s.id = :id", nativeQuery = true)
-    Optional<List<DeveloperCourse>> findDevCourseByStudentId(@Param("id") Integer id);
+	@Query(value = "SELECT dc.id, dc.classes_per_week, dc.cost_per_class, dc.developer_course_name "
+			+ "FROM developer_course dc " + "JOIN student_developer_course s "
+			+ "ON s.student_id = :id and dc.id = s.developer_course_id", nativeQuery = true)
+	Optional<List<DeveloperCourse>> findDevCourseByStudentId(@Param("id") Integer id);
 
-    @Query(value = "SELECT dc.id, dc.classes_per_week, dc.cost_per_class, dc.developer_course_name " +
-        "FROM developer_course dc " +
-        "JOIN teacher t " +
-        "WHERE t.id = :id", nativeQuery = true)
-    Optional<List<DeveloperCourse>> findDevCourseByTeacherId(@Param("id") Integer id);
+	@Query(value = "SELECT dc.id, dc.classes_per_week, dc.cost_per_class, dc.developer_course_name "
+			+ "FROM developer_course dc " + "JOIN teacher_developer_course t "
+			+ "ON t.teacher_id = :id and dc.id = t.developer_course_id", nativeQuery = true)
+	Optional<List<DeveloperCourse>> findDevCourseByTeacherId(@Param("id") Integer id);
 
 }

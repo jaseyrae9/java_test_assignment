@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alasdoo.developercourseassignment.dto.TeacherDTO;
+import com.alasdoo.developercourseassignment.exceptions.ResourceNotFoundException;
 import com.alasdoo.developercourseassignment.service.impl.TeacherServiceImpl;
 
 @RestController
@@ -28,13 +29,14 @@ public class TeacherController {
 	TeacherServiceImpl teacherServiceImpl;
 
 	/**
-	 * Returns data about teacher with the selected id.
+	 * Returns data about teacher with the passed id.
 	 * 
 	 * @param id - id of teacher
 	 * @return DTO object with teacher id, name, surname and email
+	 * @throws ResourceNotFoundException if there is no entity with passed id
 	 */
 	@GetMapping(value = "/getTeacher/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public TeacherDTO selectTeacher(@PathVariable("id") Integer id) {
+	public TeacherDTO selectTeacher(@PathVariable("id") Integer id) throws ResourceNotFoundException {
 		return teacherServiceImpl.findOne(id);
 	}
 
@@ -64,9 +66,10 @@ public class TeacherController {
 	 * 
 	 * @param email - email of the teacher
 	 * @return DTO object of teacher
+	 * @throws ResourceNotFoundException if there is no entity with passed id
 	 */
 	@GetMapping(value = "/get/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public TeacherDTO findByEmail(@PathVariable("email") String email) {
+	public TeacherDTO findByEmail(@PathVariable("email") String email) throws ResourceNotFoundException {
 		return teacherServiceImpl.findByTeacherEmail(email);
 	}
 
@@ -76,31 +79,36 @@ public class TeacherController {
 	 * @param name    - name of the teacher
 	 * @param surname - surname of the teacher
 	 * @return DTO object of teacher
+	 * @throws ResourceNotFoundException if there is no entity with passed id
 	 */
 	@GetMapping(value = "/get/{name}/{surname}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public TeacherDTO findByNameAndSurname(@PathVariable("name") String name, @PathVariable("surname") String surname) {
+	public TeacherDTO findByNameAndSurname(@PathVariable("name") String name, @PathVariable("surname") String surname)
+			throws ResourceNotFoundException {
 		return teacherServiceImpl.findByTeacherNameAndTeacherSurname(name, surname);
 	}
 
 	/**
-	 * Edits the existing teacher with selected id.
+	 * Edits the existing teacher with passed id.
 	 * 
 	 * @param id         - id of the teacher
 	 * @param teacherDTO - contains new information about the teacher
 	 * @return updated teacher
+	 * @throws ResourceNotFoundException if there is no entity with passed id
 	 */
 	@PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public TeacherDTO updateTeacher(@PathVariable("id") Integer id, @Valid @RequestBody TeacherDTO teacherDTO) {
+	public TeacherDTO updateTeacher(@PathVariable("id") Integer id, @Valid @RequestBody TeacherDTO teacherDTO)
+			throws ResourceNotFoundException {
 		return teacherServiceImpl.update(id, teacherDTO);
 	}
 
 	/**
-	 * Deletes the existing teacher with selected id.
+	 * Deletes the existing teacher with passed id.
 	 * 
 	 * @param id - id of the teacher
+	 * @throws ResourceNotFoundException - if there is no entity with passed id
 	 */
 	@DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deleteTeacher(@PathVariable("id") Integer id) {
+	public void deleteTeacher(@PathVariable("id") Integer id) throws ResourceNotFoundException {
 		teacherServiceImpl.remove(id);
 	}
 

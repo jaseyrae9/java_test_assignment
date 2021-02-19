@@ -1,6 +1,7 @@
 package com.alasdoo.developercourseassignment.controller;
 
 import com.alasdoo.developercourseassignment.dto.StudentDTO;
+import com.alasdoo.developercourseassignment.exceptions.ResourceNotFoundException;
 import com.alasdoo.developercourseassignment.service.impl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -23,41 +24,44 @@ import javax.validation.Valid;
 @CrossOrigin
 public class StudentController {
 
-    @Autowired
-    private StudentServiceImpl studentServiceImpl;
+	@Autowired
+	private StudentServiceImpl studentServiceImpl;
 
-    @GetMapping(value = "/getStudent/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public StudentDTO selectStudent(@PathVariable("id") Integer id) {
-        return studentServiceImpl.findOne(id);
-    }
+	@GetMapping(value = "/getStudent/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public StudentDTO selectStudent(@PathVariable("id") Integer id) throws ResourceNotFoundException {
+		return studentServiceImpl.findOne(id);
+	}
 
-    @GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<StudentDTO> getAllStudents() {
-        return studentServiceImpl.findAll();
-    }
+	@GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<StudentDTO> getAllStudents() {
+		return studentServiceImpl.findAll();
+	}
 
-    @PostMapping(value = "/addStudent", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public StudentDTO saveStudent(@Valid @RequestBody StudentDTO studentDTO) {
-        return studentServiceImpl.save(studentDTO);
-    }
+	@PostMapping(value = "/addStudent", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public StudentDTO saveStudent(@Valid @RequestBody StudentDTO studentDTO) {
+		return studentServiceImpl.save(studentDTO);
+	}
 
-    @PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public StudentDTO updateStudent(@PathVariable("id") Integer id, @Valid @RequestBody StudentDTO studentDTO) {
-        return studentServiceImpl.update(id, studentDTO);
-    }
+	@PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public StudentDTO updateStudent(@PathVariable("id") Integer id, @Valid @RequestBody StudentDTO studentDTO)
+			throws ResourceNotFoundException {
+		return studentServiceImpl.update(id, studentDTO);
+	}
 
-    @DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteStudent(@PathVariable("id") Integer id) {
-        studentServiceImpl.remove(id);
-    }
+	@DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void deleteStudent(@PathVariable("id") Integer id) throws ResourceNotFoundException {
+		studentServiceImpl.remove(id);
+	}
 
-    @GetMapping(value = "/get/{accountName}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public StudentDTO findByAccountName(@PathVariable("accountName") String accountName) {
-        return studentServiceImpl.findByAccountName(accountName);
-    }
+	@GetMapping(value = "/get/{accountName}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public StudentDTO findByAccountName(@PathVariable("accountName") String accountName)
+			throws ResourceNotFoundException {
+		return studentServiceImpl.findByAccountName(accountName);
+	}
 
-    @GetMapping(value = "/get/{accountName}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public StudentDTO findByAccountName(@PathVariable("accountName") String accountName, @PathVariable("password") String password) {
-        return studentServiceImpl.findByAccountNameAndPassword(accountName, password);
-    }
+	@GetMapping(value = "/get/{accountName}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public StudentDTO findByAccountName(@PathVariable("accountName") String accountName,
+			@PathVariable("password") String password) throws ResourceNotFoundException {
+		return studentServiceImpl.findByAccountNameAndPassword(accountName, password);
+	}
 }
