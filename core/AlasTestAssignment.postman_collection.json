@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2b46fafd-97cb-4734-86f9-1192031a45ed",
+		"_postman_id": "9f6dbe11-b420-4458-964a-ef243c33f441",
 		"name": "AlasTestAssignment",
 		"description": "This collection contains an API call to every existing endpoint.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -27,7 +27,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Will\",\r\n  \"surname\": \"Willington\",\r\n  \"accountName\": \"Will\",\r\n  \"email\": \"will@gmail.com\",\r\n  \"password\": \"Will123\",\r\n  \"bankCardNumber\": 123456789\r\n}"
+							"raw": "{\r\n  \"name\": \"Will\",\r\n  \"surname\": \"Willington\",\r\n  \"accountName\": \"Will\",\r\n  \"email\": \"will@gmail.com\",\r\n  \"password\": \"Will123\",\r\n  \"bankCardNumber\": 1111111\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/student/addStudent",
@@ -266,8 +266,7 @@
 					"response": []
 				}
 			],
-			"description": "API calls for /student path",
-			"protocolProfileBehavior": {}
+			"description": "API calls for /student path"
 		},
 		{
 			"name": "Teacher",
@@ -321,7 +320,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/teacher/get/John/Smith",
+							"raw": "http://localhost:8080/teacher/get/Maia/Chang",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -330,8 +329,8 @@
 							"path": [
 								"teacher",
 								"get",
-								"John",
-								"Smith"
+								"Maia",
+								"Chang"
 							]
 						}
 					},
@@ -507,8 +506,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Course",
@@ -714,9 +712,50 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GetByStudentId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/developercourse/getByStudentId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"developercourse",
+								"getByStudentId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByTeacherId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/developercourse/getByTeacherId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"developercourse",
+								"getByTeacherId",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "TeacherCourse",
@@ -890,9 +929,52 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GetTeacherDeveloperCourseByTeacherId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/teacherdevelopercourse/get/teacher/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teacherdevelopercourse",
+								"get",
+								"teacher",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTeacherDeveloperCourseByDeveloperCourseId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/teacherdevelopercourse/get/developerCource/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teacherdevelopercourse",
+								"get",
+								"developerCource",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "StudentCourse",
@@ -930,7 +1012,7 @@
 					"response": []
 				},
 				{
-					"name": "GetStudentById",
+					"name": "GetStudentCourseByStudentId",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -946,7 +1028,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/studentdevelopercourse/get/student/1",
+							"raw": "http://localhost:8080/studentdevelopercourse/get/student/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -956,14 +1038,14 @@
 								"studentdevelopercourse",
 								"get",
 								"student",
-								"1"
+								"2"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "GetCourseById",
+					"name": "GetStudendDeveloperCourseByCourseId",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1133,9 +1215,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
