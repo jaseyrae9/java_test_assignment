@@ -1,5 +1,7 @@
 package test.product.tests;
 
+import static org.testng.Assert.assertNotEquals;
+
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.support.PageFactory;
@@ -23,12 +25,15 @@ public class CourseTest extends BaseClass {
 	@Test(description = "This test will update successfully course.")
 	public void updateCourse() {
 		CoursePage page = PageFactory.initElements(driver, CoursePage.class);
-		page.updateCourseName("Promenjen");
+		String newName = "Promenjen";
+		String oldName = page.updateCourseName(newName);
+		assertNotEquals(oldName, newName); // check if old
 	}
 	
 	@Test(description = "This test will delete successfully course.")
 	public void deleteCourse() {
 		CoursePage page = PageFactory.initElements(driver, CoursePage.class);
-		page.deleteCourse();
+		String[] ret = page.deleteCourse();
+		assertNotEquals(ret[0], ret[1]);
 	}
 }

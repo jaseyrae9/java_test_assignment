@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Reporter;
 
 public class CoursePage {
 
@@ -32,11 +31,8 @@ public class CoursePage {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[2]/form/div[4]/button[1]")
 	WebElement saveButton;
 	
-//	@FindBy(how = How.CSS, using = "[data-id='1']")
-//	@FindBy(how = How.CSS, using = "[data-rowindex='0']")
-
-	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]")
-	WebElement selectedRow; // TODO: mozda promeni na  data-rowindex='0' -> proveri
+	@FindBy(how = How.CSS, using = "[data-rowindex='0']") // get first course
+	WebElement selectedRow;
 	
 	@FindBy(how = How.CSS, using = "[data-test-id='delete']")
 	WebElement deleteButton;
@@ -49,20 +45,29 @@ public class CoursePage {
 		saveButton.click(); // save course
 	}
 
-	public void deleteCourse() {
-		selectRow();
-		deleteButton.click();
+	public String[] deleteCourse() {
+		selectRow(); // select course
+		String oldId = selectedRow.getText().split("\\r?\\n")[0]; // get only second column which is course id
+		deleteButton.click(); // delete course
+		
+		selectedRow.click(); // select first to get its id
+		String newId = selectedRow.getText().split("\\r?\\n")[0]; // get only second column which is course id
+		return new String[]{ oldId, newId };
 	}
 	
 	public void selectRow() {
-		selectedRow.click();
+		courseButton.click(); // navigate to course page
+		selectedRow.click(); // select course
 	}
 	
-	public void updateCourseName(String courseName) {
-		selectRow();
-		developerCourseName.clear();
-		developerCourseName.sendKeys(courseName);
-		saveButton.click(); // save course
+	public String updateCourseName(String courseName) {
+		selectRow(); // select course
+		developerCourseName.clear(); // delete old course name
+		developerCourseName.sendKeys(courseName); // set new course name
+		saveButton.click(); // update course
+		
+		String oldName = selectedRow.getText().split("\\r?\\n")[1]; // get only second column which is course name
+		return oldName;
 	}
 
 	private void setCourseData(String courseName, Integer cost, Integer numOfClassesPerWeek) {

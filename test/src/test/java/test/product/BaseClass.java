@@ -7,6 +7,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import test.product.tests.PopulateDatabaseTest;
 import test.product.utils.BrowserFactory;
 
 public class BaseClass {
@@ -24,6 +25,7 @@ public class BaseClass {
 
     	driver.manage().window().maximize();
         System.out.println("POKRENULO SE " + driver);
+        PopulateDatabaseTest.populateDatabase();
     }
     
 

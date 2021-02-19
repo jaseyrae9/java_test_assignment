@@ -22,9 +22,15 @@ public class DeleteStudentPage {
 	@FindBy(how = How.CSS, using = "[data-test-id='delete']")
 	WebElement deleteButton;
 	
-	public void deleteStudent() {
+	public String[] deleteStudent() {
 		studentsButton.click(); // navigate to students page
 		singleRow.click(); // select first student
+		String oldId = singleRow.getText().split("\\r?\\n")[0]; // get only second column which is student id
+		
 		deleteButton.click(); // click delete button
+		
+		singleRow.click(); // select first to get its id
+		String newId = singleRow.getText().split("\\r?\\n")[0]; // get only second column which is student id
+		return new String[]{ oldId, newId };
 	}
 }

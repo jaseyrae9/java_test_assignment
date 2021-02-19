@@ -13,6 +13,9 @@ public class AddNewStudentPage {
 		this.driver = driver;
 	}
 
+	@FindBy(how = How.XPATH, using = "//a[@href='/student']")
+	WebElement studentsButton;
+
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/button")
 	WebElement addButton;
 
@@ -36,11 +39,11 @@ public class AddNewStudentPage {
 
 	public void addNewStudent(String argName, String argSurname, String argAccName, String argEmail,
 			int argBankCardNum) {
-		addButton.click();
+		studentsButton.click(); // navigate to students page
+		addButton.click(); // click add button
 		setStudentData(argName, argSurname, argAccName, argEmail, argBankCardNum);
-		saveButton.click();
+		saveButton.click(); // save student
 	}
-	
 
 	private void setStudentData(String argName, String argSurname, String argAccName, String argEmail,
 			int argBankCardNum) {

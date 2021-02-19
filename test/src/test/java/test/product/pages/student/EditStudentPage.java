@@ -31,12 +31,15 @@ public class EditStudentPage {
 	@FindBy(how = How.XPATH, using = "//a[@href='/student']")
 	WebElement studentsButton;
 
-	public void updateStudentName(String argName) {
+	public String updateStudentName(String argName) {
 		studentsButton.click(); // navigate to students page
 		singleRow.click(); // select student
 		name.clear(); // delete old name
 		name.sendKeys(argName); // set new name
-		saveButton.click(); // click save button
+		saveButton.click(); // click save button	
+		
+		String oldName = singleRow.getText().split("\\r?\\n")[1]; // get only second column which is name
+		return oldName;
 	}
 
 }

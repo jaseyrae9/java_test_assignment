@@ -1,7 +1,8 @@
 package test.product.tests;
 
-import org.junit.FixMethodOrder;
+import static org.testng.Assert.assertNotEquals;
 
+import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
@@ -27,14 +28,16 @@ public class StudentTest extends BaseClass {
 	@Test(description = "This test will update student name.")
 	public void updateStudentName() {
 		EditStudentPage page = PageFactory.initElements(driver, EditStudentPage.class);
-		page.updateStudentName("Promenjen");
+		String newName = "Promenjen";
+		String oldName = page.updateStudentName(newName);
+		assertNotEquals(oldName, newName);
 	}
-	
+
 	@Test(description = "This test will delete student.")
 	public void deleteStudent() {
 		DeleteStudentPage page = PageFactory.initElements(driver, DeleteStudentPage.class);
-		page.deleteStudent();
+		String[] ret = page.deleteStudent();
+		assertNotEquals(ret[0], ret[1]);
 	}
-	
-	
+
 }

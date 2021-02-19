@@ -41,7 +41,6 @@ public class EditStudentCoursePage {
 		toggleCoursesButton.click(); // toggle courses
 
 		selectedCourse.click(); // select course
-		Reporter.log("AAAAAAAAA" + selectedCourse, true);
 
 		classesBought.clear(); // delete old value
 		classesBought.sendKeys(String.valueOf(numOfClassesBought)); // set new value
