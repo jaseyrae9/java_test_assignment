@@ -1,4 +1,4 @@
-package test.product.pages.studentcourse;
+package test.product.pages.teachercourse;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,39 +8,39 @@ import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
-public class DeleteStudentCoursePage extends PageObject {
+public class DeleteTeacherCoursePage extends PageObject {
 
-	public DeleteStudentCoursePage(WebDriver driver) {
+	public DeleteTeacherCoursePage(WebDriver driver) {
 		super(driver);
 	}
-
-	@FindBy(how = How.XPATH, using = "//a[@href='/student']")
-	WebElement studentsButton;
+	
+	@FindBy(how = How.XPATH, using = "//a[@href='/teacher']")
+	WebElement teachersButton;
 
 	@FindBy(how = How.CSS, using = "[data-rowindex='0']")
-	WebElement selectedStudent;
+	WebElement selectRow;
 
 	@FindBy(how = How.CSS, using = "[data-test-id='courses']")
 	WebElement toggleCoursesButton;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[2]/div[1]/div/div[2]/div[2]/div/div/div/div[1]")
 	WebElement selectedCourse;
-
-	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[1]/form/div[3]/button[3]")
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[1]/form/div[2]/button[1]")
 	WebElement deleteButton;
 	
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[2]/div[1]/div/div[3]/div/div[2]/div/p")
-	WebElement numOfCourses;
+	WebElement num;
 	
-	public String[] deleteStudentCourse() {
-		studentsButton.click(); // navigate to students page
-		selectedStudent.click(); // select student
-		toggleCoursesButton.click(); // toggle courses
-		String oldValue = numOfCourses.getText();
+	public String[] deleteTeacherCourse() {
+		teachersButton.click(); // navigate to teachers page
+		selectRow.click(); // select teacher
+		toggleCoursesButton.click(); // get teacher courses
+		String oldValue = num.getText();
 		Reporter.log("stara: " + oldValue, true);
-		selectedCourse.click(); // select course
-		deleteButton.click(); // save changes
-		String newValue = numOfCourses.getText();
+		selectedCourse.click(); // select first course
+		deleteButton.click(); // delete course
+		String newValue = num.getText();
 		Reporter.log("nova: " + newValue, true);
 		return new String[] {oldValue,newValue};
 	}

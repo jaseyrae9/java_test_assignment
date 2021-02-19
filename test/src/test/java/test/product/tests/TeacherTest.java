@@ -5,11 +5,12 @@ import static org.testng.Assert.assertTrue;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import test.product.BaseClass;
+import test.product.pages.ConfirmationPage;
 import test.product.pages.teacher.AddTeacherPage;
-import test.product.pages.teacher.ConfirmationPage;
 import test.product.pages.teacher.DeleteTeacherPage;
 import test.product.pages.teacher.EditTeacherPage;
 
@@ -29,6 +30,8 @@ public class TeacherTest extends BaseClass {
 		EditTeacherPage page = new EditTeacherPage(driver);
 		String newName = "Promenjeno";
 		String oldName = page.editTeacherName(newName);
+		Reporter.log("[editTeacherNameTEst] oldName : "+ oldName + ", newName: " + newName, true);
+
 		assertNotEquals(newName, oldName);
 	}
 	
@@ -36,6 +39,8 @@ public class TeacherTest extends BaseClass {
 	public void deleteTeacher() {
 		DeleteTeacherPage page = new DeleteTeacherPage(driver);
 		String[] ret = page.deleteTeacher();
+		Reporter.log("[deleteTeacherTEst] id[0]: " + ret[0] + ", id[1]: " + ret[1], true);
+
 		assertNotEquals(ret[0], ret[1]);
 	}
 

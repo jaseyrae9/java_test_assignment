@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
@@ -36,9 +37,10 @@ public class EditStudentPage extends PageObject {
 		singleRow.click(); // select student
 		name.clear(); // delete old name
 		name.sendKeys(argName); // set new name
-		saveButton.click(); // click save button	
-		
+		saveButton.click(); // click save button
+
 		String oldName = singleRow.getText().split("\\r?\\n")[1]; // get only second column which is name
+		Reporter.log("[updateStudentNamePage] old student name: " + oldName, true);
 		return oldName;
 	}
 

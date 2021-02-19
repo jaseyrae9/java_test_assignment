@@ -1,4 +1,4 @@
-package test.product.pages.studentcourse;
+package test.product.pages.teachercourse;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,14 +10,14 @@ import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
-public class AddStudentCoursePage extends PageObject {
+public class AddTeacherCoursePage extends PageObject {
 
-	public AddStudentCoursePage(WebDriver driver) {
+	public AddTeacherCoursePage(WebDriver driver) {
 		super(driver);
 	}
 
-	@FindBy(how = How.XPATH, using = "//a[@href='/student']")
-	WebElement studentsButton;
+	@FindBy(how = How.XPATH, using = "//a[@href='/teacher']")
+	WebElement teachersButton;
 
 	@FindBy(how = How.CSS, using = "[data-rowindex='0']")
 	WebElement selectRow;
@@ -31,45 +31,33 @@ public class AddStudentCoursePage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[1]/form/div[1]/div")
 	WebElement dropDown;
 
-	@FindBy(how = How.NAME, using = "classesBought")
-	WebElement classesBought;
-
-	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[1]/form/div[3]/button[1]")
+	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[1]/form/div[2]/button[1]")
 	WebElement saveButton;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[2]/div[1]/div/div[3]/div/div[2]/div/p")
 	WebElement numOfCourses;
 
-	public String[] addStudentCourse(Integer numOfClasses) throws InterruptedException {
-		studentsButton.click(); // navigate to students page
-		selectRow.click(); // select student
-		toggleCoursesButton.click(); // toggle courses
+	public String[] addTeacherCourse() throws InterruptedException {
+		teachersButton.click(); // navigate to teachers page
+		selectRow.click(); // select teacher
+		toggleCoursesButton.click(); // open teachers courses
 
 		String oldValue = numOfCourses.getText();
 		Reporter.log("stara vrednost: " + oldValue, true);
 
-		
-		addCoursesButton.click(); // click add courdses button
-		dropDown.click(); // open dropdown/select
+		addCoursesButton.click(); // click add courses button
+		dropDown.click(); // open dropdown
 
 		// select course
 		Actions actions = new Actions(driver);
-		actions.sendKeys(Keys.chord(Keys.DOWN)).perform();
-		actions.release();
-		actions.sendKeys(Keys.chord(Keys.ENTER)).perform();
-
-		// enter number of bought classes
-		classesBought.sendKeys(String.valueOf(numOfClasses));
-
-		// click save button
+//		actions.sendKeys(Keys.DOWN).perform();
+//		actions.release();
+		actions.sendKeys(Keys.ENTER).perform();
 		actions.moveToElement(saveButton).click().perform();
-		
-//		Thread.sleep(3000);
+		// Thread.sleep(1000);
 		Reporter.log("nova vrednost: " + numOfCourses.getText(), true);
 
 		String newValue = numOfCourses.getText();
 		return new String[] { oldValue, newValue };
-
 	}
-
 }

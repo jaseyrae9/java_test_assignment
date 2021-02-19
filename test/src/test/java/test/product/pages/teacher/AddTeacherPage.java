@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import test.product.pages.ConfirmationPage;
 import test.product.pages.PageObject;
 
 public class AddTeacherPage extends PageObject {

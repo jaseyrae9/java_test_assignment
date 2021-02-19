@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import test.product.pages.ConfirmationPage;
 import test.product.pages.PageObject;
 
 public class AddNewStudentPage extends PageObject {
@@ -37,12 +38,13 @@ public class AddNewStudentPage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[2]/form/div[6]/button[1]")
 	WebElement saveButton;
 
-	public void addNewStudent(String argName, String argSurname, String argAccName, String argEmail,
+	public ConfirmationPage addNewStudent(String argName, String argSurname, String argAccName, String argEmail,
 			int argBankCardNum) {
 		studentsButton.click(); // navigate to students page
 		addButton.click(); // click add button
 		setStudentData(argName, argSurname, argAccName, argEmail, argBankCardNum);
 		saveButton.click(); // save student
+		return new ConfirmationPage(driver);
 	}
 
 	private void setStudentData(String argName, String argSurname, String argAccName, String argEmail,

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
@@ -45,6 +46,7 @@ public class EditStudentCoursePage extends PageObject {
 		classesBought.sendKeys(String.valueOf(numOfClassesBought)); // set new value
 
 		saveButton.click(); // save changes
+		Reporter.log("[editStudentCoursePage] valueOfClassesBought.getText()" + valueOfClassesBought.getText(), true);
 		return valueOfClassesBought.getText();
 	}
 
