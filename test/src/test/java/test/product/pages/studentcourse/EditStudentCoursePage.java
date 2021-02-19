@@ -4,14 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Reporter;
 
-public class EditStudentCoursePage {
+import test.product.pages.PageObject;
 
-	WebDriver driver;
+public class EditStudentCoursePage extends PageObject {
 
 	public EditStudentCoursePage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[@href='/student']")

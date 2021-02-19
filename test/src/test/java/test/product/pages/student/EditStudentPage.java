@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class EditStudentPage {
+import test.product.pages.PageObject;
 
-	WebDriver driver;
+public class EditStudentPage extends PageObject {
 
 	public EditStudentPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 
 	@FindBy(how = How.NAME, using = "name")

@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class AddNewStudentPage {
+import test.product.pages.PageObject;
 
-	WebDriver driver;
+public class AddNewStudentPage extends PageObject {
 
 	public AddNewStudentPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[@href='/student']")

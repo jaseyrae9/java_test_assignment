@@ -7,12 +7,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class AddStudentCoursePage {
+import test.product.pages.PageObject;
 
-	WebDriver driver;
+public class AddStudentCoursePage extends PageObject {
 
 	public AddStudentCoursePage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[@href='/student']")
@@ -27,7 +27,6 @@ public class AddStudentCoursePage {
 	@FindBy(how = How.CSS, using = "[data-test-id='add-courses']")
 	WebElement addCoursesButton;
 
-	// *[@id="root"]/div/main/div[2]/div[3]/div[1]/form/div[1]/div
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[1]/form/div[1]/div")
 	WebElement dropDown;
 

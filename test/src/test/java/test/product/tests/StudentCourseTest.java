@@ -4,7 +4,6 @@ import static org.testng.Assert.assertEquals;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import test.product.BaseClass;
@@ -17,13 +16,13 @@ public class StudentCourseTest extends BaseClass {
 
 	@Test(description = "This test will add course to student.")
 	public void addCourseToStudent() {
-		AddStudentCoursePage page = PageFactory.initElements(driver, AddStudentCoursePage.class);
+		AddStudentCoursePage page = new AddStudentCoursePage(driver);
 		page.addStudentCourse(2);
 	}
 	
 	@Test(description = "This test will edit student course.")
 	public void editStudentCourse() {
-		EditStudentCoursePage page = PageFactory.initElements(driver, EditStudentCoursePage.class);
+		EditStudentCoursePage page = new EditStudentCoursePage(driver);
 		String actual = page.editStudentCourse(10);
 		String expected = "10";
 		assertEquals(actual, expected);
@@ -31,7 +30,7 @@ public class StudentCourseTest extends BaseClass {
 	
 	@Test(description = "This test will delete student course.")
 	public void deleteStudentCourse() {
-		DeleteStudentCoursePage page = PageFactory.initElements(driver, DeleteStudentCoursePage.class);
+		DeleteStudentCoursePage page = new DeleteStudentCoursePage(driver);
 		page.deleteStudentCourse();
 	}
 }

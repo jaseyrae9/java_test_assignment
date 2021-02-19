@@ -4,7 +4,6 @@ import static org.testng.Assert.assertNotEquals;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import test.product.BaseClass;
@@ -19,7 +18,7 @@ public class StudentTest extends BaseClass {
 	public void addNewStudent() {
 
 		// Created Page Object using Page Factory
-		AddNewStudentPage page = PageFactory.initElements(driver, AddNewStudentPage.class);
+		AddNewStudentPage page = new AddNewStudentPage(driver);
 
 		// Call the method
 		page.addNewStudent("Jelena", "Surlan", "Neki", "jelena@gmail.com", 123456);
@@ -27,7 +26,7 @@ public class StudentTest extends BaseClass {
 
 	@Test(description = "This test will update student name.")
 	public void updateStudentName() {
-		EditStudentPage page = PageFactory.initElements(driver, EditStudentPage.class);
+		EditStudentPage page = new EditStudentPage(driver);
 		String newName = "Promenjen";
 		String oldName = page.updateStudentName(newName);
 		assertNotEquals(oldName, newName);
@@ -35,7 +34,7 @@ public class StudentTest extends BaseClass {
 
 	@Test(description = "This test will delete student.")
 	public void deleteStudent() {
-		DeleteStudentPage page = PageFactory.initElements(driver, DeleteStudentPage.class);
+		DeleteStudentPage page = new DeleteStudentPage(driver);
 		String[] ret = page.deleteStudent();
 		assertNotEquals(ret[0], ret[1]);
 	}

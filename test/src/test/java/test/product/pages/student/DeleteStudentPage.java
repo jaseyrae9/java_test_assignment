@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class DeleteStudentPage {
+import test.product.pages.PageObject;
 
-	WebDriver driver;
+public class DeleteStudentPage extends PageObject {
 
 	public DeleteStudentPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[@href='/student']")

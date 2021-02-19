@@ -6,11 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Reporter;
 
-public class PopulateDatabasePage {
-	WebDriver driver;
-
+public class PopulateDatabasePage extends PageObject {
+	
 	public PopulateDatabasePage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 	
 	@FindBy(how = How.XPATH, using="//a[@href='/settings']")
