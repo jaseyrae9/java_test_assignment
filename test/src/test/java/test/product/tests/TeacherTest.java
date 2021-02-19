@@ -1,5 +1,6 @@
 package test.product.tests;
 
+import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertTrue;
 
 import org.junit.FixMethodOrder;
@@ -9,6 +10,8 @@ import org.testng.annotations.Test;
 import test.product.BaseClass;
 import test.product.pages.teacher.AddTeacherPage;
 import test.product.pages.teacher.ConfirmationPage;
+import test.product.pages.teacher.DeleteTeacherPage;
+import test.product.pages.teacher.EditTeacherPage;
 
 @FixMethodOrder(MethodSorters.JVM)
 public class TeacherTest extends BaseClass {
@@ -20,4 +23,20 @@ public class TeacherTest extends BaseClass {
 		ConfirmationPage confirmationPage = page.addTeacher("Neko", "Neko", "neko@gmail.com");
 		assertTrue(confirmationPage.isInitialized());
 	}
+	
+	@Test(description = "This test will edit teacher name.")
+	public void editTeacherName() {
+		EditTeacherPage page = new EditTeacherPage(driver);
+		String newName = "Promenjeno";
+		String oldName = page.editTeacherName(newName);
+		assertNotEquals(newName, oldName);
+	}
+	
+	@Test(description = "This test will delete teacher") 
+	public void deleteTeacher() {
+		DeleteTeacherPage page = new DeleteTeacherPage(driver);
+		String[] ret = page.deleteTeacher();
+		assertNotEquals(ret[0], ret[1]);
+	}
+
 }
