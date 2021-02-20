@@ -28,7 +28,7 @@ public class TeacherCourseTest extends BaseClass {
 	}
 	
 	@Test(description = "This test will delete teacher course.")
-	public void deleteTeacherCourse() {
+	public void deleteTeacherCourse() throws InterruptedException {
 		DeleteTeacherCoursePage page = new DeleteTeacherCoursePage(driver);
 		String[] ret = page.deleteTeacherCourse();
 		Reporter.log("[deleteTeacherCourse] old: " + ret[0], true);

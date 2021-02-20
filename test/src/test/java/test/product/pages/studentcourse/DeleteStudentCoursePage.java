@@ -32,16 +32,17 @@ public class DeleteStudentCoursePage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[2]/div[1]/div/div[3]/div/div[2]/div/p")
 	WebElement numOfCourses;
 	
-	public String[] deleteStudentCourse() {
+	public String[] deleteStudentCourse() throws InterruptedException {
 		studentsButton.click(); // navigate to students page
 		selectedStudent.click(); // select student
 		toggleCoursesButton.click(); // toggle courses
 		String oldValue = numOfCourses.getText();
-		Reporter.log("stara: " + oldValue, true);
+		Reporter.log("[deleteStudentCoursePAGE]stara: " + oldValue, true);
 		selectedCourse.click(); // select course
 		deleteButton.click(); // save changes
+		Thread.sleep(800);
 		String newValue = numOfCourses.getText();
-		Reporter.log("nova: " + newValue, true);
+		Reporter.log("[deleteStudentCoursePAGE]nova: " + newValue, true);
 		return new String[] {oldValue,newValue};
 	}
 

@@ -14,7 +14,7 @@ import test.product.pages.course.CoursePage;
 public class CourseTest extends BaseClass {
 	
 	@Test(description = "This test will add successfully new course.")
-	public void addNewCourse() {
+	public void addNewCourse() throws InterruptedException {
 		// create page object using page factory
 		CoursePage page = new CoursePage(driver);
 		// call the method

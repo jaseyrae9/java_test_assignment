@@ -39,12 +39,12 @@ public class StudentCourseTest extends BaseClass {
 	}
 
 	@Test(description = "This test will delete student course.")
-	public void deleteStudentCourse() {
+	public void deleteStudentCourse() throws InterruptedException {
 		DeleteStudentCoursePage page = new DeleteStudentCoursePage(driver);
 		String[] ret = page.deleteStudentCourse();
-		Reporter.log("[deleteTeacherCourse] old: " + ret[0], true);
+		Reporter.log("[deleteTeacherCourseTEST] old: " + ret[0], true);
 
-		Reporter.log("[deleteTeacherCourse] new: " + ret[1], true);
+		Reporter.log("[deleteTeacherCourseTEST] new: " + ret[1], true);
 		assertNotEquals(ret[0], ret[1]); // old new
 
 	}

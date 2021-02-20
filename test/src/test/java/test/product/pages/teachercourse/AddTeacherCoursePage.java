@@ -43,7 +43,7 @@ public class AddTeacherCoursePage extends PageObject {
 		toggleCoursesButton.click(); // open teachers courses
 
 		String oldValue = numOfCourses.getText();
-		Reporter.log("stara vrednost: " + oldValue, true);
+		Reporter.log("[addTeacherCoursePAGE] stara vrednost: " + oldValue, true);
 
 		addCoursesButton.click(); // click add courses button
 		dropDown.click(); // open dropdown
@@ -55,7 +55,7 @@ public class AddTeacherCoursePage extends PageObject {
 		actions.sendKeys(Keys.ENTER).perform();
 		actions.moveToElement(saveButton).click().perform();
 		// Thread.sleep(1000);
-		Reporter.log("nova vrednost: " + numOfCourses.getText(), true);
+		Reporter.log("[addTeacherCoursePAGE] nova vrednost: " + numOfCourses.getText(), true);
 
 		String newValue = numOfCourses.getText();
 		return new String[] { oldValue, newValue };

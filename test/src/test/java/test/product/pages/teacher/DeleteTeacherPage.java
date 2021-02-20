@@ -17,7 +17,8 @@ public class DeleteTeacherPage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//a[@href='/teacher']")
 	WebElement teachersButton;
 
-	@FindBy(how = How.CSS, using = "[data-rowindex='0']") // select first
+	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]")
+	//@FindBy(how = How.CSS, using = "[data-rowindex='0']") // select first
 	WebElement singleRow;
 
 	@FindBy(how = How.CSS, using = "[data-test-id='delete']")

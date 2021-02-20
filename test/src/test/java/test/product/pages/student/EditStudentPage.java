@@ -1,5 +1,6 @@
 package test.product.pages.student;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,12 +36,16 @@ public class EditStudentPage extends PageObject {
 	public String updateStudentName(String argName) {
 		studentsButton.click(); // navigate to students page
 		singleRow.click(); // select student
-		name.clear(); // delete old name
-		name.sendKeys(argName); // set new name
-		saveButton.click(); // click save button
 
 		String oldName = singleRow.getText().split("\\r?\\n")[1]; // get only second column which is name
 		Reporter.log("[updateStudentNamePage] old student name: " + oldName, true);
+
+		name.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+
+		// name.clear(); // delete old name
+		name.sendKeys(argName); // set new name
+		saveButton.click(); // click save button
+
 		return oldName;
 	}
 

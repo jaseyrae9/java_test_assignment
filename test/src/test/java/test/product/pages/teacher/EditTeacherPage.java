@@ -1,5 +1,6 @@
 package test.product.pages.teacher;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +32,8 @@ public class EditTeacherPage extends PageObject {
 		singleRow.click(); // select teacher
 		String oldName = singleRow.getText().split("\\r?\\n")[1]; // get only second column which is name
 
-		teacherName.clear(); // delete old name
+		teacherName.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+		// teacherName.clear(); // delete old name
 		teacherName.sendKeys(name); // enter new name
 		saveButton.click(); // save teacher
 		

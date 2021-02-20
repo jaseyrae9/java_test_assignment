@@ -46,7 +46,7 @@ public class AddStudentCoursePage extends PageObject {
 		toggleCoursesButton.click(); // toggle courses
 
 		String oldValue = numOfCourses.getText();
-		Reporter.log("stara vrednost: " + oldValue, true);
+		Reporter.log("[aaddStudentCoursePage] stara vrednost: " + oldValue, true);
 
 		
 		addCoursesButton.click(); // click add courdses button
@@ -65,7 +65,7 @@ public class AddStudentCoursePage extends PageObject {
 		actions.moveToElement(saveButton).click().perform();
 		
 //		Thread.sleep(3000);
-		Reporter.log("nova vrednost: " + numOfCourses.getText(), true);
+		Reporter.log("[addStudentCoursePage] nova vrednost: " + numOfCourses.getText(), true);
 
 		String newValue = numOfCourses.getText();
 		return new String[] { oldValue, newValue };
