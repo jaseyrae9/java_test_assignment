@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class DeveloperCourse implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
     @Column(name = "developer_course_name", nullable = false, length = 250)
