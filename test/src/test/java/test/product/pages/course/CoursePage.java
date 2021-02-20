@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
@@ -46,12 +45,12 @@ public class CoursePage extends PageObject {
 	public String[] addCourse(String courseName, Integer cost, Integer numOfClassesPerWeek) throws InterruptedException {
 		courseButton.click(); // navigate to course page
 		addButton.click(); // open add form
-		Reporter.log(" pre klika [addCoursePage] " + paginationFooter.getText(), true);
+		System.out.println(" pre klika [addCoursePage] " + paginationFooter.getText());
 		String oldValue = paginationFooter.getText();
 		setCourseData(courseName, cost, numOfClassesPerWeek);
 		saveButton.click(); // save course
 		Thread.sleep(200);
-		Reporter.log("posle [addCoursePage] " + paginationFooter.getText(), true);
+		System.out.println("posle [addCoursePage] " + paginationFooter.getText());
 		String newValue = paginationFooter.getText();
 
 		return new String[] { oldValue, newValue };
@@ -65,7 +64,7 @@ public class CoursePage extends PageObject {
 		selectedRow.click(); // select first to get its id
 		
 		String newId = selectedRow.getText().split("\\r?\\n")[0]; // get only second column which is course id
-		Reporter.log("[deleteCoursePage] course: oldId: " + oldId + ", newId: " + newId, true);
+		System.out.println("[deleteCoursePage] course: oldId: " + oldId + ", newId: " + newId);
 
 		return new String[] { oldId, newId };
 	}
@@ -78,7 +77,7 @@ public class CoursePage extends PageObject {
 	public String updateCourseName(String courseName) {
 		selectRow(); // select course
 		String oldName = selectedRow.getText().split("\\r?\\n")[1]; // get only second column which is course name
-		Reporter.log("[updateCourseNamePage] old course name: " + oldName, true);
+		System.out.println("[updateCourseNamePage] old course name: " + oldName);
 
 		developerCourseName.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 		// developerCourseName.clear(); // delete old course name

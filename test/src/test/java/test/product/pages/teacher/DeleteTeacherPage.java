@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
@@ -32,7 +31,7 @@ public class DeleteTeacherPage extends PageObject {
 		deleteButton.click(); // delete selected student
 		singleRow.click(); // select first to get its id
 		String newId = singleRow.getText().split("\\r?\\n")[0]; // get only second column which is teacher id
-		Reporter.log("[deleteTeacherPage] oldId[0]: " + oldId + ", newId[1]: " + newId, true);
+		System.out.println("[deleteTeacherPage] oldId[0]: " + oldId + ", newId[1]: " + newId);
 
 		return new String[] { oldId, newId };
 	}

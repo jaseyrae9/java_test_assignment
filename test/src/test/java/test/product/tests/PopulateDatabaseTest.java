@@ -1,24 +1,17 @@
 package test.product.tests;
 
-import static org.testng.Assert.assertEquals;
-
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
-import org.testng.Reporter;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import test.product.BaseClass;
 import test.product.pages.PopulateDatabasePage;
 
-@FixMethodOrder(MethodSorters.JVM)
+//@FixMethodOrder(MethodSorters.JVM)
 public class PopulateDatabaseTest extends BaseClass {
 
-	// @Test(description = "This test will populate database.")
 	public static void populateDatabase() {
-		Reporter.log("driver" + driver, true);
+		System.out.println("driver" + driver);
 
-		// This will launch broswer and specific url
-		// WebDriver driver = BrowserFactory.startBrowser("firefox", url);
-
+		
 		// Created Page Object using Page Factory
 		PopulateDatabasePage page = new PopulateDatabasePage(driver);
 

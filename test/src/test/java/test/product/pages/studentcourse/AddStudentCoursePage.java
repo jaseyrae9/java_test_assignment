@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
@@ -46,7 +45,7 @@ public class AddStudentCoursePage extends PageObject {
 		toggleCoursesButton.click(); // toggle courses
 
 		String oldValue = numOfCourses.getText();
-		Reporter.log("[aaddStudentCoursePage] stara vrednost: " + oldValue, true);
+		System.out.println("[aaddStudentCoursePage] stara vrednost: " + oldValue);
 
 		
 		addCoursesButton.click(); // click add courdses button
@@ -65,7 +64,7 @@ public class AddStudentCoursePage extends PageObject {
 		actions.moveToElement(saveButton).click().perform();
 		
 //		Thread.sleep(3000);
-		Reporter.log("[addStudentCoursePage] nova vrednost: " + numOfCourses.getText(), true);
+		System.out.println("[addStudentCoursePage] nova vrednost: " + numOfCourses.getText());
 
 		String newValue = numOfCourses.getText();
 		return new String[] { oldValue, newValue };

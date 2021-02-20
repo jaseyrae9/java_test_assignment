@@ -3,10 +3,9 @@ package test.product;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import org.testng.Reporter;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 
 import test.product.tests.PopulateDatabaseTest;
 import test.product.utils.BrowserFactory;
@@ -16,12 +15,12 @@ public class BaseClass {
 	private static String url = "http://localhost:3000/";
 	private static String defaultBrowser = "firefox";
 	
-	@BeforeTest
+	@BeforeAll
     public static void setUp(){
-		Reporter.log("-------------- set up ---------", true);
+		System.out.println("-------------- set up ---------");
 		
 		String browserName = Optional.ofNullable(System.getProperty("browser")).orElse(defaultBrowser);
-		Reporter.log("name " + browserName, true);
+		System.out.println("name " + browserName);
 
 		// This will launch broswer and specific url
 		driver = BrowserFactory.startBrowser(browserName, url);
@@ -33,9 +32,9 @@ public class BaseClass {
     }
     
 
-	@AfterTest
+	@AfterAll
     public static void closeApp(){
-		Reporter.log("-------------- closing driver ---------", true);
+		System.out.println("-------------- closing driver ---------");
 
 		//driver.quit();
     }

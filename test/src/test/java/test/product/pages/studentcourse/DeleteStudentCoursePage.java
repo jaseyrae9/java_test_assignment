@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
@@ -37,12 +36,12 @@ public class DeleteStudentCoursePage extends PageObject {
 		selectedStudent.click(); // select student
 		toggleCoursesButton.click(); // toggle courses
 		String oldValue = numOfCourses.getText();
-		Reporter.log("[deleteStudentCoursePAGE]stara: " + oldValue, true);
+		System.out.println("[deleteStudentCoursePAGE]stara: " + oldValue);
 		selectedCourse.click(); // select course
 		deleteButton.click(); // save changes
 		Thread.sleep(800);
 		String newValue = numOfCourses.getText();
-		Reporter.log("[deleteStudentCoursePAGE]nova: " + newValue, true);
+		System.out.println("[deleteStudentCoursePAGE]nova: " + newValue);
 		return new String[] {oldValue,newValue};
 	}
 

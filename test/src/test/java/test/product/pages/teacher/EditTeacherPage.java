@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Reporter;
 
 import test.product.pages.PageObject;
 
@@ -37,7 +36,7 @@ public class EditTeacherPage extends PageObject {
 		teacherName.sendKeys(name); // enter new name
 		saveButton.click(); // save teacher
 		
-		Reporter.log("[editTeacherNamePage] old name: " + oldName, true);
+		System.out.println("[editTeacherNamePage] old name: " + oldName);
 		return oldName;
 	}
 }

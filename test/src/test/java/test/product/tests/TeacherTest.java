@@ -1,12 +1,10 @@
 package test.product.tests;
 
-import static org.testng.Assert.assertNotEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
-import org.testng.Reporter;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import test.product.BaseClass;
 import test.product.pages.ConfirmationPage;
@@ -14,10 +12,11 @@ import test.product.pages.teacher.AddTeacherPage;
 import test.product.pages.teacher.DeleteTeacherPage;
 import test.product.pages.teacher.EditTeacherPage;
 
-@FixMethodOrder(MethodSorters.JVM)
+//@FixMethodOrder(MethodSorters.JVM)
 public class TeacherTest extends BaseClass {
 
-	@Test(description = "This test will add new teacher")
+	@Test
+	@DisplayName("This test will add new teacher")
 	public void addTeacher() {
 		// create page object using page factory
 		AddTeacherPage page = new AddTeacherPage(driver);
@@ -25,21 +24,23 @@ public class TeacherTest extends BaseClass {
 		assertTrue(confirmationPage.isInitialized());
 	}
 	
-	@Test(description = "This test will edit teacher name.")
+	@Test
+	@DisplayName("This test will edit teacher name.")
 	public void editTeacherName() {
 		EditTeacherPage page = new EditTeacherPage(driver);
 		String newName = "Promenjeno";
 		String oldName = page.editTeacherName(newName);
-		Reporter.log("[editTeacherNameTEst] oldName : "+ oldName + ", newName: " + newName, true);
+		System.out.println("[editTeacherNameTEst] oldName : "+ oldName + ", newName: " + newName);
 
 		assertNotEquals(newName, oldName);
 	}
 	
-	@Test(description = "This test will delete teacher") 
+	@Test
+	@DisplayName("This test will delete teacher") 
 	public void deleteTeacher() {
 		DeleteTeacherPage page = new DeleteTeacherPage(driver);
 		String[] ret = page.deleteTeacher();
-		Reporter.log("[deleteTeacherTEst] id[0]: " + ret[0] + ", id[1]: " + ret[1], true);
+		System.out.println("[deleteTeacherTEst] id[0]: " + ret[0] + ", id[1]: " + ret[1]);
 
 		assertNotEquals(ret[0], ret[1]);
 	}
