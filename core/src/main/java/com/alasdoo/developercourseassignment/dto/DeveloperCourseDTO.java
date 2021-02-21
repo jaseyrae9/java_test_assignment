@@ -1,14 +1,12 @@
 package com.alasdoo.developercourseassignment.dto;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
-public class DeveloperCourseDTO implements Serializable {
+public class DeveloperCourseDTO {
 
 	private Integer id;
 

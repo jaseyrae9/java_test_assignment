@@ -4,12 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import test.BaseClass;
 import test.pages.teachercourse.AddTeacherCoursePage;
 import test.pages.teachercourse.DeleteTeacherCoursePage;
 
 //@FixMethodOrder(MethodSorters.JVM)
+@ExtendWith(BaseClass.class)
 public class TeacherCourseTest extends BaseClass {
 
 	@Test

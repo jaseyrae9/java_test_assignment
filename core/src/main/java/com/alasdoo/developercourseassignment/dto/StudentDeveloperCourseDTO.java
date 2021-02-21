@@ -1,10 +1,8 @@
 package com.alasdoo.developercourseassignment.dto;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.NotNull;
 
-public class StudentDeveloperCourseDTO implements Serializable {
+public class StudentDeveloperCourseDTO {
 
 	private Integer id;
 

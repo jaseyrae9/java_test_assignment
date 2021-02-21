@@ -8,7 +8,7 @@ import test.pages.PopulateDatabasePage;
 //@FixMethodOrder(MethodSorters.JVM)
 public class PopulateDatabaseTest extends BaseClass {
 
-	public static void populateDatabase() {
+	public void populateDatabase() {
 		System.out.println("driver" + driver);
 
 		// Created Page Object using Page Factory

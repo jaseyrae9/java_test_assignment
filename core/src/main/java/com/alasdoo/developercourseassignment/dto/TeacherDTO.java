@@ -1,13 +1,11 @@
 package com.alasdoo.developercourseassignment.dto;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
-public class TeacherDTO implements Serializable {
+public class TeacherDTO {
 
 	private Integer id;
 

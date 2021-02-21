@@ -1,11 +1,11 @@
 package test.tests;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import test.BaseClass;
 import test.pages.studentcourse.AddStudentCoursePage;
@@ -13,6 +13,7 @@ import test.pages.studentcourse.DeleteStudentCoursePage;
 import test.pages.studentcourse.EditStudentCoursePage;
 
 //@FixMethodOrder(MethodSorters.JVM)
+@ExtendWith(BaseClass.class)
 public class StudentCourseTest extends BaseClass {
 
 	@Test
@@ -48,6 +49,5 @@ public class StudentCourseTest extends BaseClass {
 
 		System.out.println("[deleteTeacherCourseTEST] new: " + ret[1]);
 		assertNotEquals(ret[0], ret[1]); // old new
-
 	}
 }

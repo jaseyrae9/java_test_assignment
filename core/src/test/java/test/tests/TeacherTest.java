@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import test.BaseClass;
 import test.pages.ConfirmationPage;
@@ -13,6 +14,7 @@ import test.pages.teacher.DeleteTeacherPage;
 import test.pages.teacher.EditTeacherPage;
 
 //@FixMethodOrder(MethodSorters.JVM)
+@ExtendWith(BaseClass.class)
 public class TeacherTest extends BaseClass {
 
 	@Test
@@ -43,6 +45,12 @@ public class TeacherTest extends BaseClass {
 		System.out.println("[deleteTeacherTEst] id[0]: " + ret[0] + ", id[1]: " + ret[1]);
 
 		assertNotEquals(ret[0], ret[1]);
+	}
+	
+	@Test
+	@DisplayName("This test will fail") 
+	public void failedTest() {
+		assertTrue(false);
 	}
 
 }

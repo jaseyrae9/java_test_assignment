@@ -5,11 +5,14 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
 
 import test.utils.BrowserFactory;
+import test.utils.ScreenshotUtility;
 
-public class BaseClass {
+public class BaseClass implements AfterTestExecutionCallback {
 	protected static WebDriver driver;
 	private static String url = "http://localhost:3000/";
 	private static String defaultBrowser = "firefox";
@@ -34,5 +37,22 @@ public class BaseClass {
 	public static void closeApp() {
 		System.out.println("-------------- closing driver ---------");
 		driver.quit();
+	}
+
+	@Override
+	public void afterTestExecution(ExtensionContext context) throws Exception {
+		Boolean testResult = context.getExecutionException().isPresent();
+		String testDescription = context.getDisplayName();
+		System.out.println("test result " + testResult); // false - SUCCESS, true - FAILED
+		System.out.println("display name; " + context.getDisplayName());
+		System.out.println("driver: " + driver);
+
+		if (testResult) {
+			// test failed
+			ScreenshotUtility.captureScreenshot(driver, testDescription);
+			System.out.println("pao test " + testDescription);
+		} else {
+			System.out.println("prosao test " + testDescription);
+		}
 	}
 }
