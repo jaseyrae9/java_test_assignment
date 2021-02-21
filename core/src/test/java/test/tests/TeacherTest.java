@@ -47,10 +47,10 @@ public class TeacherTest extends BaseClass {
 		assertNotEquals(ret[0], ret[1]);
 	}
 	
-	@Test
-	@DisplayName("This test will fail") 
-	public void failedTest() {
-		assertTrue(false);
-	}
+//	@Test
+//	@DisplayName("This test will fail") 
+//	public void failedTest() {
+//		assertTrue(false);
+//	}
 
 }

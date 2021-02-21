@@ -5,7 +5,22 @@ import com.alasdoo.developercourseassignment.exceptions.ResourceNotFoundExceptio
 
 public interface TeacherService extends CrudService<TeacherDTO> {
 
+	/**
+	 * Returns data about teacher with passed name and surname.
+	 * 
+	 * @param email - email of the teacher
+	 * @return DTO object of the teacher
+	 * @throws ResourceNotFoundException if there is no entity with passed id
+	 */
 	TeacherDTO findByTeacherEmail(String email) throws ResourceNotFoundException;
 
-	TeacherDTO findByTeacherNameAndTeacherSurname(String name, String surnameo) throws ResourceNotFoundException;
+	/**
+	 * Returns data about teacher with provided name and surname.
+	 * 
+	 * @param name - name of the teacher
+	 * @param surname - surname of the teacher
+	 * @return DTO object of the teacher
+	 * @throws ResourceNotFoundException if there is no entity with passed id
+	 */
+	TeacherDTO findByTeacherNameAndTeacherSurname(String name, String surname) throws ResourceNotFoundException;
 }
