@@ -18,7 +18,7 @@
 
 ## How to run tests
 1. Install web drivers for firefox, chrome and edge: Go to https://www.selenium.dev/downloads/
-2. In BrowserFactory class set system property `System.setProperty("driver name", "path of the driver exe")`
+2. In BrowserFactory class set system property to `System.setProperty("driver name", "path of the driver exe")`
 1. To switch to test enviroment and build the backend run `mvn -DskipTests clean package -P test`
 2. To start the backend run `mvn spring-boot:run -P test` command (control + c will kill the application)
 3. To start tests open new terminal and run `mvn test` (default browser is firefox and other supported browsers are chrome and edge)
