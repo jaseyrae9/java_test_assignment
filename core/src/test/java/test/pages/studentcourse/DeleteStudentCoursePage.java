@@ -39,7 +39,7 @@ public class DeleteStudentCoursePage extends PageObject {
 		System.out.println("[deleteStudentCoursePAGE]stara: " + oldValue);
 		selectedCourse.click(); // select course
 		deleteButton.click(); // save changes
-		Thread.sleep(800);
+		Thread.sleep(3000);
 		String newValue = numOfCourses.getText();
 		System.out.println("[deleteStudentCoursePAGE]nova: " + newValue);
 		return new String[] {oldValue,newValue};
