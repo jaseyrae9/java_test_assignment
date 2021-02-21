@@ -14,7 +14,7 @@
 3. To build the backend run `mvn -DskipTests clean package -P dev` 
 4. To start the backend run `mvn spring-boot:run` command (control + c will kill the application)
 5. Build the frontend: `cd core/src/frontend`, `yarn`. (install `yarn` and `node` if needed)
-6. To start the frontend go to `core/src/frontend` and run `yarn start`. It will run on `localhost:3000`.
+6. To start the frontend go to `cd core/src/frontend` and run `yarn start`. It will run on `localhost:3000`.
 
 ## How to run tests
 1. Install web drivers for firefox, chrome and edge: Go to https://www.selenium.dev/downloads/
