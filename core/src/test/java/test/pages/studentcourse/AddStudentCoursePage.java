@@ -47,7 +47,6 @@ public class AddStudentCoursePage extends PageObject {
 		String oldValue = numOfCourses.getText();
 		System.out.println("[aaddStudentCoursePage] stara vrednost: " + oldValue);
 
-		
 		addCoursesButton.click(); // click add courdses button
 		dropDown.click(); // open dropdown/select
 
@@ -62,7 +61,7 @@ public class AddStudentCoursePage extends PageObject {
 
 		// click save button
 		actions.moveToElement(saveButton).click().perform();
-		
+
 //		Thread.sleep(3000);
 		System.out.println("[addStudentCoursePage] nova vrednost: " + numOfCourses.getText());
 

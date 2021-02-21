@@ -34,6 +34,7 @@ public class EditStudentCoursePage extends PageObject {
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[3]/div[2]/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div[2]")
 	WebElement valueOfClassesBought;
+
 	public String editStudentCourse(Integer numOfClassesBought) {
 		studentsButton.click(); // navigate to students page
 		selectedStudent.click(); // select student
@@ -42,7 +43,7 @@ public class EditStudentCoursePage extends PageObject {
 		selectedCourse.click(); // select course
 
 		classesBought.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-		//classesBought.clear(); // delete old value
+		// classesBought.clear(); // delete old value
 		classesBought.sendKeys(String.valueOf(numOfClassesBought)); // set new value
 
 		saveButton.click(); // save changes

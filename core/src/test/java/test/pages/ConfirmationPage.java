@@ -16,11 +16,11 @@ public class ConfirmationPage extends PageObject {
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[1]/div/div[1]/div/div[3]/div/div[2]/div/p")
 	WebElement paginationFooterCourse;
-	
+
 	public boolean isInitialized() {
 		return toggleCourses.isDisplayed();
 	}
-	
+
 	public String getPaginationFooterCourse() {
 		return paginationFooterCourse.getText();
 	}

@@ -25,7 +25,7 @@ public class TeacherCourseTest extends BaseClass {
 		// assertNotEquals(oldValue, newValue); //old new
 
 	}
-	
+
 	@Test()
 	@DisplayName("This test will delete teacher course.")
 	public void deleteTeacherCourse() throws InterruptedException {
@@ -34,7 +34,7 @@ public class TeacherCourseTest extends BaseClass {
 		System.out.println("[deleteTeacherCourse] old: " + ret[0]);
 
 		System.out.println("[deleteTeacherCourse] new: " + ret[1]);
-		assertNotEquals(ret[0], ret[1]); //old new
+		assertNotEquals(ret[0], ret[1]); // old new
 
 	}
 

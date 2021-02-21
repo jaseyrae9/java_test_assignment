@@ -19,6 +19,6 @@
 ## How to run tests
 1. To switch to test enviroment and build the backend run `mvn -DskipTests clean package -P test`
 2. To start the backend run `mvn spring-boot:run -P test` command (control + c will kill the application)
-3. To start tests open new terminal and run `mvn test`, if you want to open tests with chrome run `mvn -Dbrowser=chrome test`
+3. To start tests open new terminal and run `mvn test`. Default browser is firefox, if you want to change it run `mvn -Dbrowser=browserName test` (supported browsers are chrome and edge)
 
 

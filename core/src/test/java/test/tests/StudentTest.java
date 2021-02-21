@@ -1,6 +1,5 @@
 package test.tests;
 
-
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,7 +21,7 @@ public class StudentTest extends BaseClass {
 
 		// Created Page Object using Page Factory
 		AddNewStudentPage page = new AddNewStudentPage(driver);
-	
+
 		// Call the method
 		ConfirmationPage confirmationPage = page.addNewStudent("Jelena", "Surlan", "Neki", "surlan@gmail.com", 123456);
 		assertTrue(confirmationPage.isInitialized());

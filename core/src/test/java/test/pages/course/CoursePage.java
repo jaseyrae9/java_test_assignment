@@ -32,8 +32,9 @@ public class CoursePage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[2]/form/div[4]/button[1]")
 	WebElement saveButton;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]")
-	//@FindBy(how = How.CSS, using = "[data-rowindex='0']") // get first course
+	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]") // get
+																																	// first
+																																	// course
 	WebElement selectedRow;
 
 	@FindBy(how = How.CSS, using = "[data-test-id='delete']")
@@ -42,7 +43,8 @@ public class CoursePage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/main/div[2]/div[1]/div/div[1]/div/div[3]/div/div[2]/div/p")
 	WebElement paginationFooter;
 
-	public String[] addCourse(String courseName, Integer cost, Integer numOfClassesPerWeek) throws InterruptedException {
+	public String[] addCourse(String courseName, Integer cost, Integer numOfClassesPerWeek)
+			throws InterruptedException {
 		courseButton.click(); // navigate to course page
 		addButton.click(); // open add form
 		System.out.println(" pre klika [addCoursePage] " + paginationFooter.getText());
@@ -62,7 +64,7 @@ public class CoursePage extends PageObject {
 		deleteButton.click(); // delete course
 
 		selectedRow.click(); // select first to get its id
-		
+
 		String newId = selectedRow.getText().split("\\r?\\n")[0]; // get only second column which is course id
 		System.out.println("[deleteCoursePage] course: oldId: " + oldId + ", newId: " + newId);
 

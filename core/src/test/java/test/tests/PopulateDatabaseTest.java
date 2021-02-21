@@ -11,7 +11,6 @@ public class PopulateDatabaseTest extends BaseClass {
 	public static void populateDatabase() {
 		System.out.println("driver" + driver);
 
-		
 		// Created Page Object using Page Factory
 		PopulateDatabasePage page = new PopulateDatabasePage(driver);
 

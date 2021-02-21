@@ -13,7 +13,7 @@ public class EditStudentPage extends PageObject {
 	public EditStudentPage(WebDriver driver) {
 		super(driver);
 	}
-	
+
 	@FindBy(how = How.NAME, using = "name")
 	WebElement name;
 
